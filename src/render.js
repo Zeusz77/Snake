@@ -146,8 +146,9 @@ almaPut()
 let init = setInterval(()=>{
     if(onmaga(snek) || checkStones(snek) || snek[0].x > 400 || snek[0].x < -400 || snek[0].y > 400 || snek[0].y < -400){
         clearInterval(init)
-        window.alert(`A játéknak vége ${pont} pontot szerezél`);
-        location.reload()
+        let player = prompt('Player: ', 'Player')
+        console.log(player)
+        //window.alert(`A játéknak vége ${pont} pontot szerezél`)
     }
     clear()
     drawSneak(snek)
