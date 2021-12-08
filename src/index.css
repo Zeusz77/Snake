@@ -1,0 +1,23 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 2rem;
+  max-width: 38rem;
+  padding: 1rem;
+  background-color: #2f2f2f;
+  color: whitesmoke;
+}
+
+canvas{
+  background-color: rgb(245, 172, 108);
+  border: 3px solid grey;
+}
+
+body{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+div{
+  margin: 1rem;
+}
