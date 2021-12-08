@@ -16,10 +16,9 @@ const ecset = canvas.getContext('2d')
 ecset.translate(canvas.width/2,canvas.height/2);
 ecset.rotate(2*Math.PI)
 
-document.addEventListener('keydown', log)
+document.addEventListener('keydown', dir)
 
-function log(event){
-    console.log(event.key)
+function dir(event){
     switch (event.key) {
         case "ArrowLeft":
             direction = "Left"
@@ -146,8 +145,6 @@ almaPut()
 let init = setInterval(()=>{
     if(onmaga(snek) || checkStones(snek) || snek[0].x > 400 || snek[0].x < -400 || snek[0].y > 400 || snek[0].y < -400){
         clearInterval(init)
-        let player = prompt('Player: ', 'Player')
-        console.log(player)
         //window.alert(`A játéknak vége ${pont} pontot szerezél`)
     }
     clear()
