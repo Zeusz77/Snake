@@ -140,22 +140,55 @@ function onmaga(sneak){
     return false
 }
 
-putStones()
-almaPut()
-let init = setInterval(()=>{
-    if(onmaga(snek) || checkStones(snek) || snek[0].x > 400 || snek[0].x < -400 || snek[0].y > 400 || snek[0].y < -400){
-        clearInterval(init)
-        //window.alert(`A játéknak vége ${pont} pontot szerezél`)
-    }
-    clear()
-    drawSneak(snek)
-    moveSneak(direction, snek)
-    drawApple(alma)
-    drawStones()
-    if(benneVan(alma, snek)){
-        pont++
-        almaPut()
-        document.querySelector('#pont').innerHTML = pont
-        snek.push({x: alma.x, y:alma.y})
-    }
-} ,'75')
+function gameLoop(){
+    putStones()
+    almaPut()
+    let init = setInterval(()=>{
+        if(onmaga(snek) || checkStones(snek) || snek[0].x > 400 || snek[0].x < -400 || snek[0].y > 400 || snek[0].y < -400){
+            clearInterval(init)
+            dialog.showModal()
+        }
+        clear()
+        drawSneak(snek)
+        moveSneak(direction, snek)
+        drawApple(alma)
+        drawStones()
+        if(benneVan(alma, snek)){
+            pont++
+            almaPut()
+            document.querySelector('#pont').innerHTML = pont
+            snek.push({x: alma.x, y:alma.y})
+        }
+    } ,'75')
+}
+
+function savePlayer(player, score){
+    
+}
+
+const menu = document.querySelector('#menu')
+const game = document.querySelector('#game')
+const ng = document.querySelector('#start')
+const save = document.querySelector('#save')
+const dialog = document.querySelector('dialog')
+const playerInput = document.querySelector('#player')
+
+ng.addEventListener('click', ()=>{
+    menu.classList.toggle('noShow')
+    game.classList.toggle('noShow')
+    gameLoop()
+})
+
+save.addEventListener('click', ()=>{
+    snek = [{x: 0, y:0}, {x: 0, y:10}, {x: 0, y:20}]
+    pont = 0
+    document.querySelector('#pont').innerHTML = pont
+    kovek = []
+    direction = 'Up'
+    dialog.close('done')
+    menu.classList.toggle('noShow')
+    game.classList.toggle('noShow')
+    let player = playerInput.value
+    playerInput.value = 'player'
+    savePlayer(player, pont)
+})

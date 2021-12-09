@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" href="index.css">
-    <script defer  type="module" src="render.js"></script>
   </head>
   <body>
-    <div>
-        A játékos pontszáma: <p id="pont">0</p>
+    <div id="menu">
+      <h1>SNAKE THE GAME</h1>
+      <button id="start">New Game</button>
+      <h2>Scoreboard</h2>
+      <table id="scoreboard">
+        
+      </table>
     </div>
-    <canvas width="800" height="800"></canvas>
+    <div id="game" class="noShow">
+      <div id="fb">
+        <div>
+          A játékos pontszáma: <p id="pont">0</p>
+        </div>
+        <canvas width="800" height="800"></canvas>
+      </div>
+      <dialog>
+        Player: <input id="player" value="player"> <br>
+        <button id="save">Save</button>
+      </dialog>
+    </div>
+    <script src="render.js"></script>
   </body>
-</html>
+  </html>
